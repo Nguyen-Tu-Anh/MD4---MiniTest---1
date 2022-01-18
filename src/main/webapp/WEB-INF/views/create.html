@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/staffs/create}" th:object="${staff}"
+      method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Employee Code</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter code" th:field="*{code}">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Name</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter name" th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Age</label>
+        <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Enter Age" th:field="*{age}">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Salary</label>
+        <input type="text" class="form-control" id="exampleInputPassword3" placeholder="Enter salary" th:field="*{salary}">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Branch</label>
+        <select name="idBranch">
+            <option th:each="c:${branches}" th:value="${c.id}" th:text="${c.name}">
+            </option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</body>
+</html>

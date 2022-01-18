@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Management</h2>
+    <a type="button" class="btn btn-success" th:href="@{/staffs/create}">Add new</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Branch</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s,loop: ${staffs}">
+            <td th:text="${loop.count}"></td>
+            <td th:text="${s.code}"></td>
+            <td><a th:href="@{/staffs/{id}/detail(id=${s.id})}" th:text="${s.name}"></a></td>
+            <td th:text="${s.age}"></td>
+            <td th:text="${s.salary}"></td>
+            <td th:text="${s.branch.name}"></td>
+            <td><a type="button" class="btn btn-primary" th:href="@{/staffs/{id}/edit(id=${s.id})}">Update</a>
+                <a type="button" class="btn btn-danger" th:href="@{/staffs/{id}/delete(id=${s.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
